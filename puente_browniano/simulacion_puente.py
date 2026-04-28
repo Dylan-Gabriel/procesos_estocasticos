@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Simulador Puente Browniano", layout="wide")
-st.title("Simulador Interactivo: Puente Browniano 🌉")
+st.title("Simulador Interactivo: Puente Browniano")
 
 st.sidebar.header("Parámetros de la Simulación")
 M = st.sidebar.slider("Número de Trayectorias", min_value=5, max_value=1000, value=50, step=10)
