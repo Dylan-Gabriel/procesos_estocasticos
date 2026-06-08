@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 streamlit
 numpy
 matplotlib
+=======
+streamlit
+numpy
+matplotlib
+>>>>>>> 7585a79831d398594dab468a3c3804be307b32a3
