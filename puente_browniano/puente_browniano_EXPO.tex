@@ -1,0 +1,191 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+
+\usetheme{Madrid}
+\usecolortheme{dolphin}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\title[Puente Browniano]{\textbf{Puente Browniano}}
+\subtitle{Procesos Estocásticos}
+\author{Dylan Gabriel Albor Saucedo}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Contexto histórico}
+En la década de 1930, Kolmogorov y Smirnov desarrollaron pruebas estadísticas destinadas a determinar si una muestra de datos proviene de una distribución teórica específica.
+
+\vspace{0.3cm}
+Sin embargo, las demostraciones originales de estos resultados eran considerablemente complejas desde el punto de vista analítico.
+
+\vspace{0.3cm}
+En 1949, Doob estableció una conexión fundamental al proponer que las distribuciones empíricas convergen hacia un puente browniano.
+
+\vspace{0.3cm}
+Esta relación permitió simplificar de manera significativa el estudio de pruebas de bondad de ajuste.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Definición del puente browniano}
+\[
+\{W(t) \mid W(T)=a\}
+\]
+
+El puente browniano se define como un movimiento browniano condicionado a alcanzar un valor fijo $a$ en un tiempo final $T$.
+
+\vspace{0.3cm}
+Este tipo de proceso conserva la naturaleza aleatoria del movimiento browniano, pero incorpora una restricción global en su comportamiento.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Construcción del proceso}
+\[
+B_t = W_t - \frac{t}{T}(W_T - a)
+\]
+
+Esta expresión proporciona una construcción explícita del puente browniano a partir de un movimiento browniano estándar.
+
+\vspace{0.3cm}
+El término $(W_T - a)$ representa la desviación final, mientras que $\frac{t}{T}$ distribuye dicha corrección a lo largo del intervalo temporal.
+
+\vspace{0.3cm}
+De esta manera, el proceso es ajustado progresivamente para satisfacer la condición final.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Verificación de la condición final}
+Se verifica que el proceso cumple la condición impuesta evaluando en $t=T$:
+
+\[
+B_T = W_T - \frac{T}{T}(W_T - a)
+\]
+
+\[
+= W_T - (W_T - a)
+\]
+
+\[
+= a
+\]
+
+Esto confirma que la construcción garantiza el valor final deseado.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Función de media}
+\[
+\mathbb{E}[B_t]
+\]
+
+Partimos de la definición:
+\[
+B_t = W_t - \frac{t}{T}(W_T - a)
+\]
+
+Aplicando esperanza:
+\[
+\mathbb{E}[B_t] = \mathbb{E}[W_t] - \frac{t}{T}(\mathbb{E}[W_T] - a)
+\]
+
+Como $\mathbb{E}[W_t]=0$ y $\mathbb{E}[W_T]=0$:
+\[
+\mathbb{E}[B_t] = \frac{t}{T}a
+\]
+
+Este resultado indica que el proceso tiene comportamiento promedio lineal.
+
+\vspace{0.3cm}
+Además, esta expresión permite entender cómo evoluciona en promedio el proceso y sirve como base para analizar su comportamiento global.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Función de covarianza}
+\[
+\mathrm{Cov}(B_s, B_t)
+\]
+
+La covarianza describe la dependencia entre los valores del proceso en distintos instantes de tiempo.
+
+\vspace{0.3cm}
+A diferencia del movimiento browniano estándar, el puente browniano presenta dependencia global debido a la condición final.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Cálculo de la covarianza}
+En el caso estándar ($T=1$, $a=0$):
+\[
+B_t = W_t - tW_1
+\]
+
+Queremos calcular:
+\[
+\mathrm{Cov}(B_s, B_t)
+\]
+
+Sustituyendo:
+\[
+\mathrm{Cov}(W_s - sW_1, W_t - tW_1)
+\]
+
+Expandiendo:
+\[
+= \mathrm{Cov}(W_s, W_t) - t\mathrm{Cov}(W_s, W_1)
+\]
+\[
+- s\mathrm{Cov}(W_1, W_t) + st\mathrm{Var}(W_1)
+\]
+
+Usando propiedades del browniano:
+\[
+= s - ts - st + st
+\]
+
+Finalmente:
+\[
+\mathrm{Cov}(B_s, B_t) = s(1 - t)
+\]
+
+Este resultado describe la dependencia temporal del proceso.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Representación dinámica}
+\[
+dB_t = -\frac{B_t}{T - t}dt + dW_t
+\]
+
+El proceso también puede describirse mediante una ecuación diferencial estocástica.
+
+\vspace{0.3cm}
+El término $dW_t$ introduce aleatoriedad, mientras que el término determinista actúa como una fuerza de corrección que garantiza la condición final.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Aplicación estadística}
+El puente browniano desempeña un papel fundamental en la prueba de Kolmogorov-Smirnov.
+
+\vspace{0.3cm}
+En el límite, el error entre la distribución empírica y la teórica converge hacia este proceso.
+
+\vspace{0.3cm}
+Esto permite analizar el comportamiento del estadístico de prueba de manera más tractable.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Conclusión}
+\begin{itemize}
+    \item El puente browniano es un proceso condicionado con propiedades bien definidas.
+    \item Su estructura probabilística se describe mediante su media y covarianza.
+    \item Posee una interpretación dinámica y aplicaciones relevantes en estadística.
+\end{itemize}
+\end{frame}
+
+\end{document}
